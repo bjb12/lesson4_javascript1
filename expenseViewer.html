@@ -30,7 +30,6 @@
           <legend><span>Instructions:</span></legend>
           <p>The expense calculator will determine your total living expenses and 
           show the percentage of the total expenses spent for each category (food, shelter, etc.).</p>
-          
           <br>
           
           <p>Please enter the amounts (in dollars) for each expense category for one month.  
@@ -50,11 +49,27 @@
               <input type="text" id="foodInput" name="food" />
               </label>
           </p>
-          
+          <p><label for="householdInput">
+              Household (utilities, cell phone, cable, maintenance, etc.):
+              <input type="text" id="householdInput" name="household"/>
+          </label>
+          </label>
+          </p>
+          <p><label for="transportationInput">
+              Transportation (public transportation, parking, gas, etc.): 
+              <input type="text" id="transportationInput" name="transportation"/>
+          </label>
+          </p>
+          <p><label for="otherInput">
+              Other (magazines, child care, etc.):
+              <input type="text" id="otherInput" name="other"/>
+          </label>
+              
+          </p>
           <!--************************************************************************************************
           * Task #1:  Add additional expense categories using the above code as an example.  The 
           *           following categories should be included:  Household, Transportation, and 
-          *           Miscellaneous.  Add your code below this comment block BEFORE the </fieldset> tag!!!
+          *           Other.  Add your code below this comment block BEFORE the </fieldset> tag!!!
           * REMINDERS:  
           *      1.)  Each id value must be unique and enclosed in quotes.  This value will be referenced
           *           later in the program and it must match EXACTLY including the case.
@@ -94,7 +109,7 @@
         *  This section in the HTML code creates TWO buttons:  1)  Convert Expense $ to % button and
         *  2)  Clear Form button.  
         *
-        *  Explanation:  The onclick method is used to associate an event with each button.  When the
+        *  Explanation:  The onclick method is used to associate an event with each button. When the
         *  user clicks either button, the methods stated will be executed to handle that event.  For instance,
         *  when the user clicks the 'Convert Expense $ to %' button the calculatePercentages() code will 
         *  execute and when the user clicks the 'Clear Form' button, the clearForm() method will execute.
@@ -137,21 +152,23 @@
               
               var shelterAmt = document.getElementById("shelterInput").value;
               var foodAmt = document.getElementById("foodInput").value;
-
+              var householdAmt = document.getElementById("householdInput").value;
+              var transportationAmt = document.getElementById("transportationInput").value;
+              var otherAmt = document.getElementById("otherInput").value;
               
               
 
               /*************************************************************************************************
                * Task 3:  Add the additional code needed that will convert the user's inputs, which are Strings 
                *          to Floats using the parseFloat() function.  This must be done for ALL of the NEW
-               *          categories you've added (Household, Transportation, and Miscellaneous). 
+               *          categories you've added (Household, Transportation, and Other). 
                *          Use the code below as an example.  
                * 
                * Explanation of Code:  
                *          This section of the code takes the value the user entered into the textfield, which
                *          is recognized as a String and converts that value into a Float for each of the following 
                *          categories:  Shelter, Food, Household (you must add), Transportation (you must add), 
-               *          and Miscellaneous (you must add). In order to perform calculations below, we need a numeric
+               *          and Other (you must add). In order to perform calculations below, we need a numeric
                *          value (float).  Use good naming conventions for the variable names.    
                * 
                *          The parseFloat() method is used to convert a String to a Float.
@@ -159,32 +176,36 @@
 
               shelterAmt = parseFloat(shelterAmt);
               foodAmt = parseFloat(foodAmt);
-
-
+              householdAmt = parseFloat(householdAmt);
+              transportationAmt = parseFloat(transportationAmt);
+              otherAmt = parseFloat(otherAmt);
 
 
               /******************************************************************************************************
                * Task 4:  Add the additional code needed to declare variables that will store the calculation
-               *          results for the NEW categories you've added (Household, Transportation, and Miscellaneous). 
+               *          results for the NEW categories you've added (Household, Transportation, and Other). 
                *          Use the code below as an example.  
                * 
                * Explanation of Code:  
                *          This section of the code creates variables that will store the result of calculating the 
                *          total expenses and the percentages for each of the following categories:  Shelter, Food, 
-               *          Household (you must add), Transportation (you must add), and Miscellaneous (you must add). 
+               *          Household (you must add), Transportation (you must add), and Other (you must add). 
                *          Use good naming conventions for the variable names.    
               *******************************************************************************************************/              
               
               var totalExpenses; //total expenses for the user
               var shelterPct; //shelter category percentage
               var foodPct;  //food category percentage
+              var householdPct; //household category percentage
+              var transportationPct; //transportation category percentage
+              var otherPct; //other category percentage
 
 
 
 
               /******************************************************************************************************
                * Task 5:  Add the additional code needed to calcuate the total expense and the percentages for each 
-               *          of the NEW categories you've added (Household, Transportation, and Miscellaneous). 
+               *          of the NEW categories you've added (Household, Transportation, and Other). 
                *          Use the code below as an example.  The totalExpenses is calculated by adding all the categories
                *          together using the variables initalized in Task 3.  
                *          Ex.  totalExpenses = shelterAmt + foodAmt + YourVariable + YourVariable + YourVariable;
@@ -193,19 +214,22 @@
                *          This section of the code calculates the total expenses of all the categories and calculates 
                *          the percentage of the total expenses spent on that category (Shelter percentage, Food percentage, 
                *          Household percentage (you must add), Transportation percentage (you must add), and 
-               *          Miscellaneous percentage (you must add). The result of the calculations are assigned to the 
+               *          Other percentage (you must add). The result of the calculations are assigned to the 
                *          variables declared in Task 4.  
               *******************************************************************************************************/   
          
-
+              totalExpenses = shelterAmt + foodAmt + householdAmt + transportationAmt + otherAmt; 
               shelterPct = 100 * (shelterAmt / totalExpenses);
               foodPct = 100 * (foodAmt / totalExpenses);
+              householdPct = 100 * (householdAmt / totalExpenses);
+              transportationPct = 100 * (transportationAmt / totalExpenses);
+              otherPct = 100 * (otherAmt / totalExpenses);
 
 
               /******************************************************************************************************
                * Task 6:  Add the additional code needed to display the total expenses and the percentages for each 
                *          category.  You must add the code to display the NEW categories you've added (Household, 
-               *          Transportation, and Miscellaneous). Use the code below as an example.  
+               *          Transportation, and Other). Use the code below as an example.  
                * 
                * Explanation of Code:  
                *          This section of the code displays the total expenses and the percentages for each category.
@@ -220,12 +244,12 @@
                *          content (inner HTML) of an element.
               *******************************************************************************************************/  
     
-              document.getElementById("totalExpenses").innerHTML = "<b>Total Expenses:     $</b> " + totalExpenses.toFixed(2);
-              document.getElementById("shelterPercentage").innerHTML = "% for <b>shelter</b>:      " + shelterPct.toFixed(1);      
-              document.getElementById("foodPercentage").innerHTML = "% for <b>food:</b>      " + foodPct.toFixed(1);
-
-         
-         
+              document.getElementById("totalExpenses").innerHTML = "<b>Total Expenses: $</b> " + totalExpenses.toFixed(2);
+              document.getElementById("shelterPercentage").innerHTML = "% for <b>Shelter:</b>      " + shelterPct.toFixed(1);      
+              document.getElementById("foodPercentage").innerHTML = "% for <b>Food:</b>" + foodPct.toFixed(1);
+              document.getElementById("householdPercentage").innerHTML = "% for <b>Household:</b>" + householdPct.toFixed(1);
+              document.getElementById("transportationPercentage").innerHTML = "% for <b>Transportation:</b>" + transportationPct.toFixed(1);
+              document.getElementById("otherPercentage").innerHTML = "% for <b>Other:</b>" + otherPct.toFixed(1); 
          
          } //end of calculatePercentages function
          
@@ -245,7 +269,7 @@
               /*************************************************************************************************************
                * Task 7:  Add the additional code needed to remove the expense percentage results displayed in the HTML page
                *          for each category.  You must add the code to remove the NEW categories you've added (Household, 
-               *          Transportation, and Miscellaneous). Use the code below as an example.  
+               *          Transportation, and Other). Use the code below as an example.  
                * 
                * Explanation of Code:  
                *          This section of the code removes the results from the HTML page when the 'Clear Form' button
@@ -258,8 +282,9 @@
               document.getElementById("totalExpenses").innerHTML = ""; 
               document.getElementById("shelterPercentage").innerHTML = "";      
               document.getElementById("foodPercentage").innerHTML  = "";
-
-
+              document.getElementById("householdPercentage").innerHTML = "";
+              document.getElementById("transportationPercentage").innerHTML = "";
+              document.getElementById("otherPercentage").innerHTML = "";
               
          }//end of clearForm function
      
